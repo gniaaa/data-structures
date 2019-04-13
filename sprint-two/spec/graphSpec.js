@@ -68,4 +68,74 @@ describe('graph', function () {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should Depth First Search traverse each node in the graph', function () {
+    graph.addNode(5);
+    graph.addNode(2);
+    graph.addNode(1);
+    graph.addNode(3);
+    graph.addNode(8);
+    graph.addNode(10);
+    graph.addEdge(5, 1);
+    graph.addEdge(5, 2);
+    graph.addEdge(1, 10);
+    graph.addEdge(1, 3);
+    graph.addEdge(3, 8);
+    graph.addEdge(8, 2);
+
+    expect(graph.traverseDFS(5).length).to.equal(6);
+    expect(graph.traverseDFS(5)).to.eql([5, 1, 10, 3, 8, 2]);
+  });
+
+  it('should return -1 for invalid input in Depth First Search', function () {
+    graph.addNode(5);
+    graph.addNode(2);
+    graph.addNode(1);
+    graph.addNode(3);
+    graph.addNode(8);
+    graph.addNode(10);
+    graph.addEdge(5, 1);
+    graph.addEdge(5, 2);
+    graph.addEdge(1, 10);
+    graph.addEdge(1, 3);
+    graph.addEdge(3, 8);
+    graph.addEdge(8, 2);
+
+    expect(graph.traverseDFS(7)).to.equal(-1);
+  });
+
+  it('should Breadth First Search traverse each node in the graph', function () {
+    graph.addNode(5);
+    graph.addNode(2);
+    graph.addNode(1);
+    graph.addNode(3);
+    graph.addNode(8);
+    graph.addNode(10);
+    graph.addEdge(5, 1);
+    graph.addEdge(5, 2);
+    graph.addEdge(1, 10);
+    graph.addEdge(1, 3);
+    graph.addEdge(3, 8);
+    graph.addEdge(8, 2);
+    
+    expect(graph.traverseBFS(5).length).to.equal(6);
+    expect(graph.traverseBFS(5)).to.eql([5, 1, 2, 10, 3, 8]);
+  });
+
+  it('should return -1 for invalid input in Breadth First Search', function () {
+    graph.addNode(5);
+    graph.addNode(2);
+    graph.addNode(1);
+    graph.addNode(3);
+    graph.addNode(8);
+    graph.addNode(10);
+    graph.addEdge(5, 1);
+    graph.addEdge(5, 2);
+    graph.addEdge(1, 10);
+    graph.addEdge(1, 3);
+    graph.addEdge(3, 8);
+    graph.addEdge(8, 2);
+
+    expect(graph.traverseBFS(7)).to.equal(-1);
+  });  
 });

@@ -1,5 +1,4 @@
 
-
 // Instantiate a new graph
 var Graph = function () {
   this.nodes = {};
@@ -54,6 +53,61 @@ Graph.prototype.forEachNode = function (cb) {
   for (var key in this.nodes) {
     cb(key);
   }
+};
+
+Graph.prototype.traverseDFS = function(node) {
+  // check if input node exists in graph when initializing
+  if (!this.nodes.hasOwnProperty(node)) {
+    return -1;
+  }
+  // keep track of visited nodes
+  var visitedObj = {};
+  var visitedArr = [];
+  // keep reference to initial graph and not global object
+  var self = this;
+
+  var helperTraverse = function(node) {
+    if (visitedObj.hasOwnProperty(node)) {
+      return;
+    } else {
+      visitedObj[node] = node;
+      visitedArr.push(node);
+      for (var i = 0; i < self.nodes[node].length; i++) {
+        helperTraverse(self.nodes[node][i]);
+      }
+    }
+  }
+
+  helperTraverse(node);
+  return visitedArr;
+};
+
+Graph.prototype.traverseBFS = function(node) {
+  // check if input node exists in graph when initializing
+  if (!this.nodes.hasOwnProperty(node)) {
+    return -1;
+  }
+  // keep track of visited nodes
+  var visitedObj = {};
+  visitedObj[node] = node;
+
+  var visitedArr = [node];
+  var queue = [node];
+
+  while (queue.length > 0) {
+    var currentNode = queue[0];
+    for (var i = 0; i < this.nodes[currentNode].length; i++) {
+      var edgeNode = this.nodes[currentNode][i];
+      if (!visitedObj.hasOwnProperty(edgeNode)) {
+        visitedObj[edgeNode] = edgeNode;
+        visitedArr.push(edgeNode);
+        queue.push(edgeNode);
+      }
+    }
+    queue.shift();
+  }
+
+  return visitedArr;
 };
 
 /*
