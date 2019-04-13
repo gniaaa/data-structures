@@ -7,25 +7,24 @@ var Stack = function () {
 var stackMethods = {};
 
 stackMethods.push = function (value) {
-  for (var key in this.storage) {
-    var nextIndex = Number(key) + 1;
-    this.storage[nextIndex] = this.storage[key];
+  var end = this.size();
+
+  for (var i = end; i > 0; i--) {
+    this.storage[i] = this.storage[i - 1];
   }
+
   this.storage[0] = value;
 };
 
 stackMethods.pop = function () {
   var result = this.storage[0];
-  for (var key in this.storage) {
-    if (key === '0') {
-      continue;
-    } else {
-      var prevIndex = Number(key) - 1;
-      this.storage[prevIndex] = this.storage[key];
-    }
+  var end = this.size();
+
+  for (var i = 1; i < end; i++) {
+    this.storage[i - 1] = this.storage[i];
   }
-  var last = Object.keys(this.storage).length;
-  delete this.storage[last - 1];
+
+  delete this.storage[end - 1];
   return result;
 };
 

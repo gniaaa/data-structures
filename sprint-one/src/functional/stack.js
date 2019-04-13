@@ -6,25 +6,23 @@ var Stack = function () {
 
   // Implement the methods below
   someInstance.push = function (value) {
-    for (var key in storage) {
-      var nextIndex = Number(key) + 1;
-      storage[nextIndex] = storage[key];
+    var end = someInstance.size();
+    for (var i = end; i > 0; i--) {
+      storage[i] = storage[i - 1];
     }
+
     storage[0] = value;
   };
 
   someInstance.pop = function () {
     var result = storage[0];
-    for (var key in storage) {
-      if (key === '0') {
-        continue;
-      } else {
-        var prevIndex = Number(key) - 1;
-        storage[prevIndex] = storage[key];
-      }
+    var end = someInstance.size();
+
+    for (var i = 1; i < end; i++) {
+      storage[i - 1] = storage[i];
     }
-    var last = Object.keys(storage).length;
-    delete storage[last - 1];
+
+    delete storage[end - 1];
     return result;
   };
 

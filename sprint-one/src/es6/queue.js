@@ -6,18 +6,19 @@ class Queue {
   }
 
   enqueue(value) {
-    var last = Object.keys(this.storage).length;
-    this.storage[last] = value;
+    var end = this.size();
+    this.storage[end] = value;
   }
 
   dequeue() {
     var result = this.storage[0];
-    for (var key in this.storage) {
-      var newIndex = Number(key) + 1;
-      this.storage[key] = this.storage[newIndex];
+    var end = this.size();
+
+    for (var i = 0; i < end; i++) {
+      this.storage[i] = this.storage[i + 1];
     }
-    var last = Object.keys(this.storage).length;
-    delete this.storage[last - 1];
+
+    delete this.storage[end - 1];
     return result;
   }
 
