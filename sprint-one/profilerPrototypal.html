@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,33 +14,34 @@
     <script type="text/javascript" src="src/prototypal/stack.js"></script>
 
     <script>
-        $(document).ready(function(){
-           $('#prototypalQ').click(function(){
-            var arrayQ = [];
-            for (let index = 0; index < 1000000; index++) {
-                arrayQ.push(Queue());
-            }
-            alert('Queue is done running a 1,000,000 times!');
+        $(document).ready(function () {
+            $('#prototypalQ').click(function () {
+                var arrayQ = [];
+                for (let index = 0; index < 10000000; index++) {
+                    arrayQ.push(Queue());
+                }
+                alert('Queue is done running a 10,000,000 times!');
             });
         });
 
-        $(document).ready(function(){
-           $('#prototypalS').click(function(){
-            var arrayS = [];
-            for (let index = 0; index < 1000000; index++) {
-                arrayS.push(Stack());
-            }
-            alert('Stack is done running a 1,000,000 times!');
+        $(document).ready(function () {
+            $('#prototypalS').click(function () {
+                var arrayS = [];
+                for (let index = 0; index < 10000000; index++) {
+                    arrayS.push(Stack());
+                }
+                alert('Stack is done running a 10,000,000 times!');
             });
         });
     </script>
 
 </head>
+
 <body>
 
-    <h1>Prototypal Queue</h1><button id="prototypalQ">Run 1,000,000 times</button>
-    <h1>Prototypal Stack</h1><button id="prototypalS">Run 1,000,000 times</button>
-    
-</body>
-</html>
+    <h1>Prototypal Queue</h1><button id="prototypalQ">Run 10,000,000 times</button>
+    <h1>Prototypal Stack</h1><button id="prototypalS">Run 10,000,000 times</button>
 
+</body>
+
+</html>

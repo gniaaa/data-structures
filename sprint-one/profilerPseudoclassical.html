@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,33 +14,34 @@
     <script type="text/javascript" src="src/pseudoclassical/stack.js"></script>
 
     <script>
-        $(document).ready(function(){
-           $('#pseudoclassicalQ').click(function(){
-            var arrayQ = [];
-            for (let index = 0; index < 1000000; index++) {
-                arrayQ.push(new Queue());
-            }
-            alert('Queue is done running a 1,000,000 times!');
+        $(document).ready(function () {
+            $('#pseudoclassicalQ').click(function () {
+                var arrayQ = [];
+                for (let index = 0; index < 10000000; index++) {
+                    arrayQ.push(new Queue());
+                }
+                alert('Queue is done running a 10,000,000 times!');
             });
         });
 
-        $(document).ready(function(){
-           $('#pseudoclassicalS').click(function(){
-            var arrayS = [];
-            for (let index = 0; index < 1000000; index++) {
-                arrayS.push(new Stack());
-            }
-            alert('Stack is done running a 1,000,000 times!');
+        $(document).ready(function () {
+            $('#pseudoclassicalS').click(function () {
+                var arrayS = [];
+                for (let index = 0; index < 10000000; index++) {
+                    arrayS.push(new Stack());
+                }
+                alert('Stack is done running a 10,000,000 times!');
             });
         });
     </script>
 
 </head>
+
 <body>
 
-    <h1>Pseudoclassical Queue</h1><button id="pseudoclassicalQ">Run 1,000,000 times</button>
-    <h1>Pseudoclassical Stack</h1><button id="pseudoclassicalS">Run 1,000,000 times</button>
-    
-</body>
-</html>
+    <h1>Pseudoclassical Queue</h1><button id="pseudoclassicalQ">Run 10,000,000 times</button>
+    <h1>Pseudoclassical Stack</h1><button id="pseudoclassicalS">Run 10,000,000 times</button>
 
+</body>
+
+</html>
